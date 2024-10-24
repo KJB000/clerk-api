@@ -1,11 +1,11 @@
 'use client'
 import { useAuth, useUser } from '@clerk/nextjs'
 import React from 'react'
-
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 type Props = {}
 
 export default function DashboardClientPage({}: Props) {
-  const { isLoaded: isLoadedAuth, userId, sessionId, getToken } = useAuth()
+  const { isLoaded: isLoadedAuth, userId, sessionId /* getToken*/ } = useAuth()
   const { isLoaded: isLoadedUser, isSignedIn, user } = useUser()
   if (!isLoadedAuth || !userId) {
     return null

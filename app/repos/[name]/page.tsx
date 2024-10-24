@@ -2,7 +2,7 @@ import Repo from '@/components/Repo'
 import RepoDirs from '@/components/RepoDirs'
 import Link from 'next/link'
 import React, { Suspense } from 'react'
-import { DiVim } from 'react-icons/di'
+//import { DiVim } from 'react-icons/di'
 
 export default function RepoDetailPage({
   params,

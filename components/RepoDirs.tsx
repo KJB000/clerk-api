@@ -11,6 +11,7 @@ const RepoDirs: React.FC<RepoProps> = async ({ name }) => {
     `https://api.github.com/repos/${username}/${name}/contents`
   )
   const contents = await response.json()
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const dirs = contents.filter((content: any) => content.type === 'dir')
   // console.log(dirs)
 
@@ -18,16 +19,20 @@ const RepoDirs: React.FC<RepoProps> = async ({ name }) => {
     <div className="mt-2">
       <h3 className="text-xl font-bold">Directories</h3>
       <ul>
-        {dirs.map((dir: any) => (
-          <li key={dir.path}>
-            <Link
-              className="underline"
-              href={`https://github.com/${username}/${name}/tree/master/${dir.path}`}
-            >
-              {dir.path}
-            </Link>
-          </li>
-        ))}
+        {
+          /* eslint-disable-next-line @typescript-eslint/no-explicit-any*/ dirs.map(
+            (dir: any) => (
+              <li key={dir.path}>
+                <Link
+                  className="underline"
+                  href={`https://github.com/${username}/${name}/tree/master/${dir.path}`}
+                >
+                  {dir.path}
+                </Link>
+              </li>
+            )
+          )
+        }
       </ul>
     </div>
   )
